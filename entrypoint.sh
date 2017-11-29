@@ -8,5 +8,5 @@ if [[ -z ${1} ]]; then
   	--tcp=${SYSLOG_TCP:-false} --tls=${SYSLOG_TLS:-false} --facility=${SYSLOG_FACILITY:-user} \
   	--severity=${SYSLOG_SEVERITY:-notice} --hostname=${SYSLOG_HOSTNAME} ${SYSLOG_FILES}
 else
-  exec /remote_syslog/remote_syslog $@
+  exec /remote_syslog/remote_syslog -D $@
 fi
