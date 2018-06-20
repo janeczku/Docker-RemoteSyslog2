@@ -16,17 +16,18 @@ It automates the collection and sending of logs to central log collectors or clo
 
 ### Usage examples
 
-Configuration parameters can be passed both using environment variables and command line flags
+Configuration parameters can be passed both using environment variables and command line flags.
+When passing parameters using command line flags, remember to add "-D" flag, otherwise the container will stop immediately after the command.
 
 #### Forward all logs from your Docker host to Loggly
 
     docker run -d -v /var/logs:/host/logs janeczku/remote_syslog2 \
-    -d logs-01.loggly.com -p 514 /host/logs/*.log
+    -D -d logs-01.loggly.com -p 514 /host/logs/*.log
 
 #### Forward logs from a Nginx container to Papertrail over TCP with TLS
 
     docker run -d --volumes-from nginx janeczku/remote_syslog2 \
-    -d logs.papertrailapp.com -p 54545 --tls=true /var/log/nginx/nginx-access.log
+    -D -d logs.papertrailapp.com -p 54545 --tls=true /var/log/nginx/nginx-access.log
 
 ### Compatible log management servers/services (non-exclusive list)
 
